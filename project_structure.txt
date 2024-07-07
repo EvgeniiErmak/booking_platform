@@ -1,0 +1,63 @@
+.
+├── README.md
+├── docker-compose.yml
+├── frontend
+│   ├── index.html
+│   ├── scripts
+│   │   └── main.js
+│   └── styles
+│       └── main.css
+├── main.py
+├── project_structure.txt
+├── scripts
+│   ├── deploy.sh
+│   ├── run_tests.sh
+│   └── setup_env.sh
+├── services
+│   ├── notifications
+│   │   ├── app
+│   │   │   ├── main.go
+│   │   │   ├── models.go
+│   │   │   ├── routers
+│   │   │   └── utils.go
+│   │   ├── go.mod
+│   │   └── tests
+│   │       ├── test_main.go
+│   │       └── test_models.go
+│   ├── reservations
+│   │   ├── app
+│   │   │   ├── Dockerfile
+│   │   │   ├── main.py
+│   │   │   ├── models.py
+│   │   │   ├── routers
+│   │   │   ├── schemas.py
+│   │   │   └── utils.py
+│   │   ├── requirements.txt
+│   │   └── tests
+│   │       ├── test_main.py
+│   │       └── test_models.py
+│   ├── users
+│   │   ├── app
+│   │   │   ├── main.py
+│   │   │   ├── models.py
+│   │   │   ├── routers
+│   │   │   ├── schemas.py
+│   │   │   └── utils.py
+│   │   ├── requirements.txt
+│   │   └── tests
+│   │       ├── test_main.py
+│   │       └── test_models.py
+│   └── venues
+│       ├── app
+│       │   ├── main.py
+│       │   ├── models.py
+│       │   ├── routers
+│       │   ├── schemas.py
+│       │   └── utils.py
+│       ├── requirements.txt
+│       └── tests
+│           ├── test_main.py
+│           └── test_models.py
+└── test_main.http
+
+22 directories, 39 files

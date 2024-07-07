@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  reservations:
+    build:
+      context: ./services/reservations
+    environment:
+      DATABASE_URL: postgresql://user:password@postgres/db
+    ports:
+      - "8001:80"
+    depends_on:
+      - postgres
+
+  users:
+    build:
+      context: ./services/users
+    environment:
+      DATABASE_URL: postgresql://user:password@postgres/db
+    ports:
+      - "8002:80"
+    depends_on:
+      - postgres
+
+  venues:
+    build:
+      context: ./services/venues
+    environment:
+      DATABASE_URL: postgresql://user:password@postgres/db
+    ports:
+      - "8003:80"
+    depends_on:
+      - postgres
+
+  notifications:
+    build:
+      context: ./services/notifications
+    environment:
+      DATABASE_URL: postgresql://user:password@postgres/db
+    ports:
+      - "8004:80"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
