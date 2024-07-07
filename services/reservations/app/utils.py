@@ -2,15 +2,18 @@
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
+import urllib.parse
 
+# Закодированные учетные данные
+username = urllib.parse.quote_plus("postgres")
+password = urllib.parse.quote_plus("12345")
+host = "localhost"
+dbname = "booking_db"
 
-SQLALCHEMY_DATABASE_URL = "postgresql://booking_user:your_password@localhost/booking_db"
+SQLALCHEMY_DATABASE_URL = f"postgresql://{username}:{password}@{host}/{dbname}"
 
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
+engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"client_encoding": "utf8"})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-Base = declarative_base()
 
 
 def get_db():
