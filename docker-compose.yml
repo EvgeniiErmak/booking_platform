@@ -1,54 +1,61 @@
 version: '3.8'
 
 services:
-  postgres:
-    image: postgres:13
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: db
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+  users:
+    build: ./services/users/app
+    container_name: users_service
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8001"]
+    ports:
+      - "8001:8001"
+    depends_on:
+      - db
 
   reservations:
-    build:
-      context: ./services/reservations
-    environment:
-      DATABASE_URL: postgresql://user:password@postgres/db
+    build: ./services/reservations/app
+    container_name: reservations_service
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8002"]
     ports:
-      - "8001:80"
+      - "8002:8002"
     depends_on:
-      - postgres
-
-  users:
-    build:
-      context: ./services/users
-    environment:
-      DATABASE_URL: postgresql://user:password@postgres/db
-    ports:
-      - "8002:80"
-    depends_on:
-      - postgres
+      - db
 
   venues:
-    build:
-      context: ./services/venues
-    environment:
-      DATABASE_URL: postgresql://user:password@postgres/db
+    build: ./services/venues/app
+    container_name: venues_service
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8003"]
     ports:
-      - "8003:80"
+      - "8003:8003"
     depends_on:
-      - postgres
+      - db
 
   notifications:
-    build:
-      context: ./services/notifications
-    environment:
-      DATABASE_URL: postgresql://user:password@postgres/db
+    build: ./services/notifications
+    container_name: notifications_service
+    command: ["/notifications", "--port", "8004"]
     ports:
-      - "8004:80"
+      - "8004:8004"
     depends_on:
-      - postgres
+      - db
+
+  frontend:
+    container_name: frontend_service
+    image: nginx:alpine
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    ports:
+      - "80:80"
+
+  db:
+    image: postgres:13
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: booking_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
   postgres_data:

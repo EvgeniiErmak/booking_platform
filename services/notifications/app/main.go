@@ -17,6 +17,6 @@ func main() {
     r.HandleFunc("/notifications", routers.CreateNotificationHandler).Methods("POST")
     r.HandleFunc("/notifications/{id}", routers.GetNotificationHandler).Methods("GET")
 
-    log.Println("Server started at :8003")
-    log.Fatal(http.ListenAndServe(":8003", r))
+    log.Println("Server started at :8004")
+    log.Fatal(http.ListenAndServe(":8004", r))
 }
