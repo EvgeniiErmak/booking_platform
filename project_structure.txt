@@ -7,6 +7,7 @@
 │   │   └── main.js
 │   └── styles
 │       └── main.css
+├── go.mod
 ├── main.py
 ├── project_structure.txt
 ├── scripts
@@ -32,10 +33,10 @@
 │   │   │   ├── Dockerfile
 │   │   │   ├── main.py
 │   │   │   ├── models.py
+│   │   │   ├── requirements.txt
 │   │   │   ├── routers
 │   │   │   ├── schemas.py
 │   │   │   └── utils.py
-│   │   ├── requirements.txt
 │   │   └── tests
 │   │       ├── test_main.py
 │   │       └── test_models.py
@@ -44,25 +45,25 @@
 │   │   │   ├── Dockerfile
 │   │   │   ├── main.py
 │   │   │   ├── models.py
+│   │   │   ├── requirements.txt
 │   │   │   ├── routers
 │   │   │   ├── schemas.py
 │   │   │   └── utils.py
-│   │   ├── requirements.txt
 │   │   └── tests
 │   │       ├── test_main.py
 │   │       └── test_models.py
 │   └── venues
-│       ├── Dockerfile
 │       ├── app
+│       │   ├── Dockerfile
 │       │   ├── main.py
 │       │   ├── models.py
+│       │   ├── requirements.txt
 │       │   ├── routers
 │       │   ├── schemas.py
 │       │   └── utils.py
-│       ├── requirements.txt
 │       └── tests
 │           ├── test_main.py
 │           └── test_models.py
 └── test_main.http
 
-24 directories, 42 files
+24 directories, 43 files
