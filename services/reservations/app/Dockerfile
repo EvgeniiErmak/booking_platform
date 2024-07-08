@@ -1,11 +1,13 @@
+# booking_platform/services/reservations/app/Dockerfile
+
 FROM python:3.9-slim
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY . /app
 
-RUN pip install -r requirements.txt
+ENV PYTHONPATH "${PYTHONPATH}:/app"
 
-COPY . .
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8002"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8003", "--reload"]

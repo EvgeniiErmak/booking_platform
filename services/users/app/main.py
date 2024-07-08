@@ -1,9 +1,9 @@
 # booking_platform/services/users/app/main.py
 
 from fastapi import FastAPI
-from .routers import user_router
-from .models import Base
-from .utils import engine
+from routers import user_router
+from models import Base
+from utils import engine
 
 # Создание всех таблиц
 Base.metadata.create_all(bind=engine)

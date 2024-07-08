@@ -1,61 +1,65 @@
 version: '3.8'
 
 services:
-  users:
-    build: ./services/users/app
-    container_name: users_service
-    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8001"]
+  postgres_db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: booking_platform
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - booking_platform_network
+
+  frontend_service:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    networks:
+      - booking_platform_network
+
+  users_service:
+    build:
+      context: ./services/users/app
     ports:
       - "8001:8001"
     depends_on:
-      - db
+      - postgres_db
+    networks:
+      - booking_platform_network
 
-  reservations:
-    build: ./services/reservations/app
-    container_name: reservations_service
-    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8002"]
+  venues_service:
+    build:
+      context: ./services/venues/app
     ports:
       - "8002:8002"
     depends_on:
-      - db
+      - postgres_db
+    networks:
+      - booking_platform_network
 
-  venues:
-    build: ./services/venues/app
-    container_name: venues_service
-    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8003"]
+  reservations_service:
+    build:
+      context: ./services/reservations/app
     ports:
       - "8003:8003"
     depends_on:
-      - db
+      - postgres_db
+    networks:
+      - booking_platform_network
 
-  notifications:
-    build: ./services/notifications
-    container_name: notifications_service
-    command: ["/notifications"]
+  notifications_service:
+    build:
+      context: ./services/notifications
     ports:
       - "8004:8004"
-    depends_on:
-      - db
+    networks:
+      - booking_platform_network
 
-  frontend:
-    container_name: frontend_service
-    image: nginx:alpine
-    volumes:
-      - ./frontend:/usr/share/nginx/html
-    ports:
-      - "80:80"
-
-  db:
-    image: postgres:13
-    container_name: postgres_db
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 12345
-      POSTGRES_DB: booking_db
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+networks:
+  booking_platform_network:
+    driver: bridge
 
 volumes:
   postgres_data:

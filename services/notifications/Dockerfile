@@ -1,25 +1,25 @@
 # booking_platform/services/notifications/Dockerfile
 
-# Используем базовый образ с Go
+# Use the official Golang image from the Docker Hub
 FROM golang:1.18
 
-# Устанавливаем рабочую директорию в контейнере
+# Set the working directory
 WORKDIR /app
 
-# Копируем go.mod и go.sum в рабочую директорию
+# Copy go.mod and go.sum files
 COPY go.mod go.sum ./
 
-# Загружаем зависимости
+# Download all dependencies. Dependencies will be cached if the go.mod and go.sum files are not changed
 RUN go mod download
 
-# Копируем исходный код в рабочую директорию
+# Copy the source from the current directory to the working Directory inside the container
 COPY . .
 
-# Собираем бинарный файл
+# Build the Go app
 RUN go build -o /notifications ./app/main.go
 
-# Экспонируем порт
-EXPOSE 8003
+# Expose port 8004 to the outside world
+EXPOSE 8004
 
-# Команда запуска контейнера
+# Command to run the executable
 CMD ["/notifications"]
