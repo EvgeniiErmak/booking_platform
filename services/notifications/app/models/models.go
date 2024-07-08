@@ -1,6 +1,6 @@
-// booking_platform/services/notifications/app/models.go
+// booking_platform/services/notifications/app/models/models.go
 
-package main
+package models
 
 type Notification struct {
     ID      int    `json:"id"`

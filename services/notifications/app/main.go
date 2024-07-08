@@ -7,8 +7,8 @@ import (
     "net/http"
 
     "github.com/gorilla/mux"
-    "booking_platform/services/notifications/app/routers"
     "booking_platform/services/notifications/app/handlers"
+    "booking_platform/services/notifications/app/routers"
 )
 
 func main() {

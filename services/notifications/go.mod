@@ -1,5 +1,3 @@
-// booking_platform/services/notifications/go.mod
-
 module booking_platform/services/notifications
 
 go 1.18

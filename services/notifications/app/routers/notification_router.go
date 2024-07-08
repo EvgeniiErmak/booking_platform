@@ -11,7 +11,7 @@ import (
     "booking_platform/services/notifications/app/models"
 )
 
-var notifications = make(map[int]models.Notification)
+var Notifications = make(map[int]models.Notification)
 var idCounter = 1
 
 func CreateNotificationHandler(w http.ResponseWriter, r *http.Request) {
@@ -22,7 +22,7 @@ func CreateNotificationHandler(w http.ResponseWriter, r *http.Request) {
     }
     notification.ID = idCounter
     idCounter++
-    notifications[notification.ID] = notification
+    Notifications[notification.ID] = notification
     w.WriteHeader(http.StatusCreated)
     json.NewEncoder(w).Encode(notification)
 }
@@ -34,7 +34,7 @@ func GetNotificationHandler(w http.ResponseWriter, r *http.Request) {
         http.Error(w, "Invalid ID", http.StatusBadRequest)
         return
     }
-    notification, ok := notifications[id]
+    notification, ok := Notifications[id]
     if !ok {
         http.Error(w, "Notification not found", http.StatusNotFound)
         return
