@@ -31,7 +31,7 @@ services:
   notifications:
     build: ./services/notifications
     container_name: notifications_service
-    command: ["/notifications", "--port", "8004"]
+    command: ["/notifications"]
     ports:
       - "8004:8004"
     depends_on:
