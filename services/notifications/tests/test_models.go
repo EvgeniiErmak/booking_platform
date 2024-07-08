@@ -1,6 +1,6 @@
 // booking_platform/services/notifications/tests/test_models.go
 
-package main
+package main_test
 
 import "testing"
 
