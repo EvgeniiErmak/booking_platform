@@ -4,8 +4,8 @@ services:
   postgres_db:
     image: postgres:13
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
       POSTGRES_DB: booking_platform
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -15,7 +15,7 @@ services:
   frontend_service:
     image: nginx:latest
     ports:
-      - "80:80"
+      - "8000:8000"
     networks:
       - booking_platform_network
 
