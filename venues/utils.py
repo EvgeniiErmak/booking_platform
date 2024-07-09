@@ -1,7 +1,7 @@
 # booking_platform/venues/utils.py
 
 from sqlalchemy.orm import Session
-from .. import models, schemas
+from venues import models, schemas
 
 
 def get_venue(db: Session, venue_id: int):
