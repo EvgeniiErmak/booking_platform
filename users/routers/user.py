@@ -3,14 +3,14 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from users.models import User
-from users.schemas import UserCreate, User
+from users.schemas import UserCreate, User as UserSchema
 from database import get_db
 from users.utils import get_password_hash
 
 router = APIRouter()
 
 
-@router.post("/users/", response_model=User)
+@router.post("/", response_model=UserSchema)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
     db_user = db.query(User).filter(User.email == user.email).first()
     if db_user:
@@ -23,7 +23,7 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
     return db_user
 
 
-@router.get("/users/{user_id}", response_model=User)
+@router.get("/{user_id}", response_model=UserSchema)
 def read_user(user_id: int, db: Session = Depends(get_db)):
     db_user = db.query(User).filter(User.id == user_id).first()
     if db_user is None:

@@ -1,7 +1,7 @@
 # booking_platform/users/tests/test_user.py
 
 from fastapi.testclient import TestClient
-from main import app
+from users.main import app
 
 client = TestClient(app)
 
