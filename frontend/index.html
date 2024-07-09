@@ -1,6 +1,7 @@
 <!-- booking_platform/frontend/index.html -->
+
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,31 +15,31 @@
     <main>
         <section id="user-section">
             <h2>Пользователи</h2>
-            <div id="user-list"></div>
             <form id="user-form">
                 <input type="text" id="user-name" placeholder="Имя" required>
-                <input type="email" id="user-email" placeholder="Электронная почта" required>
+                <input type="email" id="user-email" placeholder="Email" required>
                 <button type="submit">Добавить пользователя</button>
             </form>
+            <div id="user-list"></div>
         </section>
         <section id="venue-section">
             <h2>Площадки</h2>
-            <div id="venue-list"></div>
             <form id="venue-form">
                 <input type="text" id="venue-name" placeholder="Название" required>
                 <input type="text" id="venue-address" placeholder="Адрес" required>
                 <button type="submit">Добавить площадку</button>
             </form>
+            <div id="venue-list"></div>
         </section>
         <section id="reservation-section">
             <h2>Бронирования</h2>
-            <div id="reservation-list"></div>
             <form id="reservation-form">
                 <input type="number" id="reservation-user-id" placeholder="ID пользователя" required>
                 <input type="number" id="reservation-venue-id" placeholder="ID площадки" required>
-                <input type="date" id="reservation-date" required>
+                <input type="date" id="reservation-date" placeholder="Дата" required>
                 <button type="submit">Добавить бронирование</button>
             </form>
+            <div id="reservation-list"></div>
         </section>
     </main>
     <footer>

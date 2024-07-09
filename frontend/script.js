@@ -1,4 +1,5 @@
 // booking_platform/frontend/script.js
+
 document.addEventListener('DOMContentLoaded', function() {
     fetchUsers();
     fetchVenues();
@@ -22,7 +23,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function fetchUsers() {
     fetch('http://localhost:8000/users')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ошибка сети при получении пользователей');
+            }
+            return response.json();
+        })
         .then(data => {
             const userList = document.getElementById('user-list');
             userList.innerHTML = '';
@@ -47,8 +53,14 @@ function addUser() {
         },
         body: JSON.stringify({ name, email }),
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Ошибка сети при добавлении пользователя');
+        }
+        return response.json();
+    })
     .then(data => {
+        console.log('Пользователь добавлен:', data);
         fetchUsers();
     })
     .catch(error => console.error('Ошибка при добавлении пользователя:', error));
@@ -56,7 +68,12 @@ function addUser() {
 
 function fetchVenues() {
     fetch('http://localhost:8001/venues')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ошибка сети при получении площадок');
+            }
+            return response.json();
+        })
         .then(data => {
             const venueList = document.getElementById('venue-list');
             venueList.innerHTML = '';
@@ -81,8 +98,14 @@ function addVenue() {
         },
         body: JSON.stringify({ name, address }),
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Ошибка сети при добавлении площадки');
+        }
+        return response.json();
+    })
     .then(data => {
+        console.log('Площадка добавлена:', data);
         fetchVenues();
     })
     .catch(error => console.error('Ошибка при добавлении площадки:', error));
@@ -90,7 +113,12 @@ function addVenue() {
 
 function fetchReservations() {
     fetch('http://localhost:8002/reservations')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ошибка сети при получении бронирований');
+            }
+            return response.json();
+        })
         .then(data => {
             const reservationList = document.getElementById('reservation-list');
             reservationList.innerHTML = '';
@@ -116,8 +144,14 @@ function addReservation() {
         },
         body: JSON.stringify({ user_id, venue_id, date }),
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Ошибка сети при добавлении бронирования');
+        }
+        return response.json();
+    })
     .then(data => {
+        console.log('Бронирование добавлено:', data);
         fetchReservations();
     })
     .catch(error => console.error('Ошибка при добавлении бронирования:', error));
