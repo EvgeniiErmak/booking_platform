@@ -1,12 +1,14 @@
-booking_platform
+.
 ├── Dockerfile
 ├── README.md
+├── database.py
 ├── docker-compose.yml
 ├── frontend
 │   ├── index.html
 │   ├── script.js
 │   └── style.css
 ├── gitlab-ci.yml
+├── init_db.py
 ├── notifications
 │   ├── main.go
 │   ├── models.go
@@ -16,6 +18,7 @@ booking_platform
 │   │   └── test_notification.go
 │   └── utils.go
 ├── project_structure.txt
+├── requirements.txt
 ├── reservations
 │   ├── main.py
 │   ├── models.py
@@ -34,12 +37,15 @@ booking_platform
 │   ├── tests
 │   │   └── test_user.py
 │   └── utils.py
-└── venues
-    ├── main.py
-    ├── models.py
-    ├── routers
-    │   └── venue.py
-    ├── schemas.py
-    ├── tests
-    │   └── test_venue.py
-    └── utils.py
+├── venues
+│   ├── main.py
+│   ├── models.py
+│   ├── routers
+│   │   └── venue.py
+│   ├── schemas.py
+│   ├── tests
+│   │   └── test_venue.py
+│   └── utils.py
+└── wait-for-it.sh
+
+14 directories, 35 files
