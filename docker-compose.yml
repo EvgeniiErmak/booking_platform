@@ -45,7 +45,7 @@ services:
       context: ./notifications
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "8003:8000"
     env_file:
       - .env
     depends_on:
@@ -60,3 +60,15 @@ services:
       POSTGRES_DB: booking_db
     ports:
       - "5432:5432"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - users
+      - venues
+      - reservations
+      - notifications

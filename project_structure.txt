@@ -1,9 +1,10 @@
-booking_platform
+.
 ├── Dockerfile
 ├── README.md
 ├── database.py
 ├── docker-compose.yml
 ├── frontend
+│   ├── Dockerfile
 │   ├── index.html
 │   ├── script.js
 │   └── style.css
@@ -15,7 +16,9 @@ booking_platform
 │   ├── go.mod
 │   ├── go.sum
 │   ├── main.go
-│   ├── models.go
+│   ├── models
+│   │   └── models.go
+│   ├── notification
 │   ├── routers
 │   │   └── notification.go
 │   ├── tests
@@ -51,3 +54,5 @@ booking_platform
 │   │   └── test_venue.py
 │   └── utils.py
 └── wait-for-it.sh
+
+15 directories, 41 files
