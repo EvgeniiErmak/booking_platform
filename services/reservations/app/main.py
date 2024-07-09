@@ -1,12 +1,16 @@
 # booking_platform/services/reservations/app/main.py
 
 from fastapi import FastAPI
-from routers import reservation_router
-from models import Base
-from utils import engine
+import sys
+import os
+
+sys.path.append('/app')
+
+from services.reservations.app.routers import reservation_router
+from services.reservations.app import models, schemas, utils
 
 # Создание всех таблиц
-Base.metadata.create_all(bind=engine)
+models.Base.metadata.create_all(bind=utils.engine)
 
 app = FastAPI()
 

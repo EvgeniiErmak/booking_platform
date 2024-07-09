@@ -6,8 +6,8 @@ WORKDIR /app
 
 COPY . /app
 
-ENV PYTHONPATH "${PYTHONPATH}:/app"
+ENV PYTHONPATH=/app
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8003", "--reload"]
+CMD ["uvicorn", "services.reservations.app.main:app", "--host", "0.0.0.0", "--port", "8003", "--reload"]
