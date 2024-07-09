@@ -1,5 +1,4 @@
 // booking_platform/frontend/script.js
-
 document.addEventListener('DOMContentLoaded', function() {
     fetchUsers();
     fetchVenues();
