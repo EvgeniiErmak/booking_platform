@@ -15,6 +15,8 @@ services:
       - db
 
   venues:
+    environment:
+      - LANG=C.UTF-8
     build:
       context: .
       dockerfile: Dockerfile
@@ -28,6 +30,7 @@ services:
   db:
     image: postgres:13
     environment:
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --lc-collate=C --lc-ctype=C"
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 12345
       POSTGRES_DB: booking_db
