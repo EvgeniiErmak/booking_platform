@@ -1,0 +1,22 @@
+# booking_platform/docker-compose.yml
+
+version: '3.8'
+
+services:
+  users:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@db/users
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: booking_db
+    ports:
+      - "5432:5432"

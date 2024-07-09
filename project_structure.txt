@@ -1,0 +1,45 @@
+booking_platform
+├── Dockerfile
+├── README.md
+├── docker-compose.yml
+├── frontend
+│   ├── index.html
+│   ├── script.js
+│   └── style.css
+├── gitlab-ci.yml
+├── notifications
+│   ├── main.go
+│   ├── models.go
+│   ├── routers
+│   │   └── notification.go
+│   ├── tests
+│   │   └── test_notification.go
+│   └── utils.go
+├── project_structure.txt
+├── reservations
+│   ├── main.py
+│   ├── models.py
+│   ├── routers
+│   │   └── reservation.py
+│   ├── schemas.py
+│   ├── tests
+│   │   └── test_reservation.py
+│   └── utils.py
+├── users
+│   ├── main.py
+│   ├── models.py
+│   ├── routers
+│   │   └── user.py
+│   ├── schemas.py
+│   ├── tests
+│   │   └── test_user.py
+│   └── utils.py
+└── venues
+    ├── main.py
+    ├── models.py
+    ├── routers
+    │   └── venue.py
+    ├── schemas.py
+    ├── tests
+    │   └── test_venue.py
+    └── utils.py
