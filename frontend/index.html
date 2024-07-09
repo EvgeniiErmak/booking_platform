@@ -16,14 +16,30 @@
         <section id="user-section">
             <h2>Users</h2>
             <div id="user-list"></div>
+            <form id="user-form">
+                <input type="text" id="user-name" placeholder="Name">
+                <input type="email" id="user-email" placeholder="Email">
+                <button type="submit">Add User</button>
+            </form>
         </section>
         <section id="venue-section">
             <h2>Venues</h2>
             <div id="venue-list"></div>
+            <form id="venue-form">
+                <input type="text" id="venue-name" placeholder="Name">
+                <input type="text" id="venue-address" placeholder="Address">
+                <button type="submit">Add Venue</button>
+            </form>
         </section>
         <section id="reservation-section">
             <h2>Reservations</h2>
             <div id="reservation-list"></div>
+            <form id="reservation-form">
+                <input type="number" id="reservation-user-id" placeholder="User ID">
+                <input type="number" id="reservation-venue-id" placeholder="Venue ID">
+                <input type="date" id="reservation-date">
+                <button type="submit">Add Reservation</button>
+            </form>
         </section>
     </main>
     <footer>
