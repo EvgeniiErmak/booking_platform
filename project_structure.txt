@@ -1,4 +1,4 @@
-.
+booking_platform
 ├── Dockerfile
 ├── README.md
 ├── database.py
@@ -47,5 +47,3 @@
 │   │   └── test_venue.py
 │   └── utils.py
 └── wait-for-it.sh
-
-14 directories, 35 files
