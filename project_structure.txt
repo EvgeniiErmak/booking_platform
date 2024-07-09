@@ -8,8 +8,12 @@ booking_platform
 │   ├── script.js
 │   └── style.css
 ├── gitlab-ci.yml
+├── go.mod
 ├── init_db.py
 ├── notifications
+│   ├── Dockerfile
+│   ├── go.mod
+│   ├── go.sum
 │   ├── main.go
 │   ├── models.go
 │   ├── routers

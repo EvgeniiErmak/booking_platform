@@ -1,11 +1,19 @@
 // booking_platform/notifications/utils.go
 
-package utils
+package main
 
 import (
-    "log"
+	"encoding/json"
+	"net/http"
 )
 
-func LogMessage(message string) {
-    log.Println(message)
+func RespondWithError(w http.ResponseWriter, code int, msg string) {
+	RespondWithJSON(w, code, map[string]string{"error": msg})
+}
+
+func RespondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
+	response, _ := json.Marshal(payload)
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(code)
+	w.Write(response)
 }

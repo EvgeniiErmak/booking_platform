@@ -1,24 +1,11 @@
 # booking_platform/notifications/Dockerfile
+FROM golang:1.16-alpine
 
-# Используем базовый образ golang
-FROM golang:1.20
-
-# Создаем рабочую директорию
 WORKDIR /app
 
-# Копируем файлы проекта
-COPY ./notifications /app
+COPY . .
 
-# Устанавливаем зависимости
-RUN go mod init booking_platform
-RUN go get -d -v ./...
-RUN go install -v ./...
+RUN go mod tidy
+RUN go build -o notification_service .
 
-# Компилируем приложение
-RUN go build -o /notification_service
-
-# Открываем порт для сервиса
-EXPOSE 8080
-
-# Запускаем приложение
-CMD ["/notification_service"]
+CMD ["/app/notification_service"]
