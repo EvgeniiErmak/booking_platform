@@ -34,7 +34,7 @@ function fetchUsers() {
                 userList.appendChild(userDiv);
             });
         })
-        .catch(error => console.error('Error fetching users:', error));
+        .catch(error => console.error('Ошибка при получении пользователей:', error));
 }
 
 function addUser() {
@@ -52,7 +52,7 @@ function addUser() {
     .then(data => {
         fetchUsers();
     })
-    .catch(error => console.error('Error adding user:', error));
+    .catch(error => console.error('Ошибка при добавлении пользователя:', error));
 }
 
 function fetchVenues() {
@@ -68,7 +68,7 @@ function fetchVenues() {
                 venueList.appendChild(venueDiv);
             });
         })
-        .catch(error => console.error('Error fetching venues:', error));
+        .catch(error => console.error('Ошибка при получении площадок:', error));
 }
 
 function addVenue() {
@@ -86,7 +86,7 @@ function addVenue() {
     .then(data => {
         fetchVenues();
     })
-    .catch(error => console.error('Error adding venue:', error));
+    .catch(error => console.error('Ошибка при добавлении площадки:', error));
 }
 
 function fetchReservations() {
@@ -98,11 +98,11 @@ function fetchReservations() {
             data.forEach(reservation => {
                 const reservationDiv = document.createElement('div');
                 reservationDiv.className = 'reservation';
-                reservationDiv.innerHTML = `<strong>Reservation ID:</strong> ${reservation.id} <strong>User ID:</strong> ${reservation.user_id} <strong>Venue ID:</strong> ${reservation.venue_id} <strong>Date:</strong> ${reservation.date}`;
+                reservationDiv.innerHTML = `<strong>ID бронирования:</strong> ${reservation.id} <strong>ID пользователя:</strong> ${reservation.user_id} <strong>ID площадки:</strong> ${reservation.venue_id} <strong>Дата:</strong> ${reservation.date}`;
                 reservationList.appendChild(reservationDiv);
             });
         })
-        .catch(error => console.error('Error fetching reservations:', error));
+        .catch(error => console.error('Ошибка при получении бронирований:', error));
 }
 
 function addReservation() {
@@ -121,5 +121,5 @@ function addReservation() {
     .then(data => {
         fetchReservations();
     })
-    .catch(error => console.error('Error adding reservation:', error));
+    .catch(error => console.error('Ошибка при добавлении бронирования:', error));
 }

@@ -1,49 +1,49 @@
 <!-- booking_platform/frontend/index.html -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Platform</title>
+    <title>Платформа бронирования</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Booking Platform</h1>
+        <h1>Платформа бронирования</h1>
     </header>
     <main>
         <section id="user-section">
-            <h2>Users</h2>
+            <h2>Пользователи</h2>
             <div id="user-list"></div>
             <form id="user-form">
-                <input type="text" id="user-name" placeholder="Name">
-                <input type="email" id="user-email" placeholder="Email">
-                <button type="submit">Add User</button>
+                <input type="text" id="user-name" placeholder="Имя" required>
+                <input type="email" id="user-email" placeholder="Электронная почта" required>
+                <button type="submit">Добавить пользователя</button>
             </form>
         </section>
         <section id="venue-section">
-            <h2>Venues</h2>
+            <h2>Площадки</h2>
             <div id="venue-list"></div>
             <form id="venue-form">
-                <input type="text" id="venue-name" placeholder="Name">
-                <input type="text" id="venue-address" placeholder="Address">
-                <button type="submit">Add Venue</button>
+                <input type="text" id="venue-name" placeholder="Название" required>
+                <input type="text" id="venue-address" placeholder="Адрес" required>
+                <button type="submit">Добавить площадку</button>
             </form>
         </section>
         <section id="reservation-section">
-            <h2>Reservations</h2>
+            <h2>Бронирования</h2>
             <div id="reservation-list"></div>
             <form id="reservation-form">
-                <input type="number" id="reservation-user-id" placeholder="User ID">
-                <input type="number" id="reservation-venue-id" placeholder="Venue ID">
-                <input type="date" id="reservation-date">
-                <button type="submit">Add Reservation</button>
+                <input type="number" id="reservation-user-id" placeholder="ID пользователя" required>
+                <input type="number" id="reservation-venue-id" placeholder="ID площадки" required>
+                <input type="date" id="reservation-date" required>
+                <button type="submit">Добавить бронирование</button>
             </form>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 Booking Platform</p>
+        <p>&copy; 2024 Платформа бронирования</p>
     </footer>
     <script src="script.js"></script>
 </body>
